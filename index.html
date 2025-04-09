@@ -82,20 +82,54 @@
     button:hover {
       background-color: #f2f2f2;
     }
+
+    #mensagem {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: #ffffffcc;
+      color: #333;
+      max-width: 300px;
+      transition: opacity 0.3s ease;
+    }
+
+    #mensagem.sucesso {
+      border-left: 5px solid #2ecc71;
+    }
+
+    #mensagem.erro {
+      border-left: 5px solid #e74c3c;
+    }
   </style>
 </head>
 <body>
   <img src="Logo.png" alt="Logo CantinaPay">
   <h1>Por que só reduzir, se dá pra ACABAR com as filas nos intervalos?</h1>
+
   <form id="form">
     <input type="text" name="nome" placeholder="Seu nome" required>
     <input type="email" name="email" placeholder="Seu e-mail" required>
     <button type="submit" id="cta-notify">Como vocês fazem isso? Me avisa.</button>
   </form>
 
+  <div id="mensagem" style="display: none;"></div>
+
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     emailjs.init('hOGllbONjGStJqKf2');
+
+    const mensagem = document.getElementById('mensagem');
+
+    function exibirMensagem(texto, tipo) {
+      mensagem.textContent = texto;
+      mensagem.className = tipo;
+      mensagem.style.display = 'block';
+      setTimeout(() => {
+        mensagem.style.display = 'none';
+      }, 5000);
+    }
 
     document.getElementById('form').addEventListener('submit', function(event) {
       event.preventDefault();
@@ -107,9 +141,11 @@
 
       emailjs.sendForm('default_service', 'template_p7cxyiw', this)
         .then(function() {
-          alert('Mensagem enviada com sucesso!');
+          exibirMensagem('Mensagem enviada com sucesso!', 'sucesso');
+          document.getElementById('form').reset();
         }, function(error) {
-          alert('Erro ao enviar mensagem: ' + JSON.stringify(error));
+          exibirMensagem('Erro ao enviar mensagem. Tente novamente.', 'erro');
+          document.getElementById('form').reset();
         });
     });
   </script>
