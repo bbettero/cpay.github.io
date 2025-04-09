@@ -26,6 +26,7 @@
             align-items: center;
             text-align: center;
             color: white;
+            padding: 20px;
         }
 
         img {
@@ -36,11 +37,50 @@
 
         h1 {
             font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        input, button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+        }
+
+        input {
+            background: #ffffffcc;
+            color: #333;
+        }
+
+        button {
+            background-color: #ffffff;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
 <body>
     <img src="Logo.png" alt="Logo CantinaPay">
-    <h1>Estamos chegando...</h1>
+    <h1>Por que só reduzir, se dá pra acabar com as filas?</h1>
+    <form>
+        <input type="text" name="nome" placeholder="Seu nome" required>
+        <input type="email" name="email" placeholder="Seu e-mail" required>
+        <button type="submit">Me avisa quando lançar</button>
+    </form>
 </body>
 </html>
