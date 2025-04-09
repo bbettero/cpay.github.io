@@ -1,106 +1,107 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H3RKKMKNKZ"></script>
-<script>
-     document.addEventListener('DOMContentLoaded', function () {
-    const btn = document.getElementById('cta-notify');
-    if (btn) {
-      btn.addEventListener('click', function () {
-        gtag('event', 'clique_cta', {
-          'event_category': 'formulario',
-          'event_label': 'clique_botao_me_avisa'
+  <meta charset="UTF-8">
+  <title>CantinaPay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H3RKKMKNKZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-H3RKKMKNKZ');
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.getElementById('cta-notify');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          gtag('event', 'clique_cta', {
+            'event_category': 'formulario',
+            'event_label': 'clique_botao_me_avisa'
+          });
         });
-      });
+      }
+    });
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  });
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-H3RKKMKNKZ');
-</script>
-    <meta charset="UTF-8">
-    <title>CantinaPay</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    html, body {
+      height: 100%;
+      font-family: 'Nunito', sans-serif;
+    }
 
-        html, body {
-            height: 100%;
-            font-family: 'Nunito', sans-serif;
-        }
+    body {
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
 
-        body {
-            background: url('background.png') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 20px;
-        }
+    img {
+      max-width: 300px;
+      height: auto;
+      margin-bottom: 20px;
+    }
 
-        img {
-            max-width: 300px;
-            height: auto;
-            margin-bottom: 20px;
-        }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
 
-        h1 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 300px;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 100%;
-            max-width: 300px;
-        }
+    input, button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+    }
 
-        input, button {
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-family: 'Nunito', sans-serif;
-            font-size: 1rem;
-        }
+    input {
+      background: #ffffffcc;
+      color: #333;
+    }
 
-        input {
-            background: #ffffffcc;
-            color: #333;
-        }
+    button {
+      background-color: #ffffff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-        button {
-            background-color: #ffffff;
-            color: #000;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #f2f2f2;
-        }
-    </style>
+    button:hover {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
-    <img src="Logo.png" alt="Logo CantinaPay">
-    <h1>Por que só reduzir, se dá pra ACABAR <p>com as filas nos intervalos?</h1>
-    <form>
-        <input type="text" name="nome" placeholder="Seu nome" required>
-        <input type="email" name="email" placeholder="Seu e-mail" required>
-        <button type="submit" id="cta-notify">Como vocês fazem isso? Me avisa.</button>
-    </form>
+  <img src="Logo.png" alt="Logo CantinaPay">
+  <h1>Por que só reduzir, se dá pra ACABAR com as filas nos intervalos?</h1>
+  <form>
+    <input type="text" name="nome" placeholder="Seu nome" required>
+    <input type="email" name="email" placeholder="Seu e-mail" required>
+    <button type="submit" id="cta-notify">Como vocês fazem isso? Me avisa.</button>
+  </form>
 </body>
 </html>
