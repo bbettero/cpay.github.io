@@ -3,6 +3,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CantinaPay</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 
@@ -40,14 +41,15 @@
     }
 
     img {
-      max-width: 300px;
+      max-width: 80%;
       height: auto;
       margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       margin-bottom: 20px;
+      padding: 0 10px;
     }
 
     form {
@@ -55,13 +57,13 @@
       flex-direction: column;
       gap: 10px;
       width: 100%;
-      max-width: 300px;
+      max-width: 320px;
     }
 
     input, button {
-      padding: 10px;
+      padding: 12px;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       font-family: 'Nunito', sans-serif;
       font-size: 1rem;
     }
@@ -83,24 +85,14 @@
       background-color: #f2f2f2;
     }
 
-    #mensagem {
-      margin-top: 20px;
-      padding: 10px;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: bold;
-      background-color: #ffffffcc;
-      color: #333;
-      max-width: 300px;
-      transition: opacity 0.3s ease;
-    }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.3rem;
+      }
 
-    #mensagem.sucesso {
-      border-left: 5px solid #2ecc71;
-    }
-
-    #mensagem.erro {
-      border-left: 5px solid #e74c3c;
+      input, button {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
@@ -114,22 +106,9 @@
     <button type="submit" id="cta-notify">Como vocês fazem isso? Me avisa.</button>
   </form>
 
-  <div id="mensagem" style="display: none;"></div>
-
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     emailjs.init('hOGllbONjGStJqKf2');
-
-    const mensagem = document.getElementById('mensagem');
-
-    function exibirMensagem(texto, tipo) {
-      mensagem.textContent = texto;
-      mensagem.className = tipo;
-      mensagem.style.display = 'block';
-      setTimeout(() => {
-        mensagem.style.display = 'none';
-      }, 5000);
-    }
 
     document.getElementById('form').addEventListener('submit', function(event) {
       event.preventDefault();
@@ -143,7 +122,7 @@
         .then(function() {
           window.location.href = "sucesso.html";
         }, function(error) {
-          window.location.href = "sucesso.html";
+          window.location.href = "error.html";
         });
     });
   </script>
