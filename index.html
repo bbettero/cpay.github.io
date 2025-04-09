@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,18 +13,6 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-H3RKKMKNKZ');
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const btn = document.getElementById('cta-notify');
-      if (btn) {
-        btn.addEventListener('click', function () {
-          gtag('event', 'clique_cta', {
-            'event_category': 'formulario',
-            'event_label': 'clique_botao_me_avisa'
-          });
-        });
-      }
-    });
   </script>
 
   <style>
@@ -98,10 +87,31 @@
 <body>
   <img src="Logo.png" alt="Logo CantinaPay">
   <h1>Por que só reduzir, se dá pra ACABAR com as filas nos intervalos?</h1>
-  <form>
+  <form id="form">
     <input type="text" name="nome" placeholder="Seu nome" required>
     <input type="email" name="email" placeholder="Seu e-mail" required>
     <button type="submit" id="cta-notify">Como vocês fazem isso? Me avisa.</button>
   </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init('hOGllbONjGStJqKf2');
+
+    document.getElementById('form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      gtag('event', 'clique_cta', {
+        'event_category': 'formulario',
+        'event_label': 'clique_botao_me_avisa'
+      });
+
+      emailjs.sendForm('default_service', 'template_tu4aazi', this)
+        .then(function() {
+          alert('Mensagem enviada com sucesso!');
+        }, function(error) {
+          alert('Erro ao enviar mensagem: ' + JSON.stringify(error));
+        });
+    });
+  </script>
 </body>
 </html>
