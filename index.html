@@ -5,6 +5,17 @@
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-H3RKKMKNKZ"></script>
 <script>
+     document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('cta-notify');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        gtag('event', 'clique_cta', {
+          'event_category': 'formulario',
+          'event_label': 'clique_botao_me_avisa'
+        });
+      });
+    }
+  });
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -89,7 +100,7 @@
     <form>
         <input type="text" name="nome" placeholder="Seu nome" required>
         <input type="email" name="email" placeholder="Seu e-mail" required>
-        <button type="submit">Como vocês fazem isso? Me avisa</button>
+        <button type="submit" id="cta-notify">Como vocês fazem isso? Me avisa.</button>
     </form>
 </body>
 </html>
