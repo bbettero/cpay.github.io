@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>CantinaPay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H3RKKMKNKZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-H3RKKMKNKZ');
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    body {
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+
+    img {
+      max-width: 300px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    input, button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+    }
+
+    input {
+      background: #ffffffcc;
+      color: #333;
+    }
+
+    button {
+      background-color: #ffffff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #f2f2f2;
+    }
+
+    #mensagem {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: #ffffffcc;
+      color: #333;
+      max-width: 300px;
+      transition: opacity 0.3s ease;
+    }
+
+    #mensagem.sucesso {
+      border-left: 5px solid #2ecc71;
+    }
+
+    #mensagem.erro {
+      border-left: 5px solid #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <img src="Logo.png" alt="Logo CantinaPay">
+  <h1>Por que só reduzir, se dá pra ACABAR com as filas nos intervalos?</h1>
+
+  <form id="form">
+    <input type="text" name="nome" placeholder="Seu nome" required>
+    <input type="email" name="email" placeholder="Seu e-mail" required>
+    <button type="submit" id="cta-notify">Como vocês fazem isso? Me avisa.</button>
+  </form>
+
+  <div id="mensagem" style="display: none;"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init('hOGllbONjGStJqKf2');
+
+    const mensagem = document.getElementById('mensagem');
+
+    function exibirMensagem(texto, tipo) {
+      mensagem.textContent = texto;
+      mensagem.className = tipo;
+      mensagem.style.display = 'block';
+      setTimeout(() => {
+        mensagem.style.display = 'none';
+      }, 5000);
+    }
+
+    document.getElementById('form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      gtag('event', 'clique_cta', {
+        'event_category': 'formulario',
+        'event_label': 'clique_botao_me_avisa'
+      });
+
+      emailjs.sendForm('default_service', 'template_p7cxyiw', this)
+        .then(function() {
+          window.location.href = "sucesso.html";
+        }, function(error) {
+          window.location.href = "sucesso.html";
+        });
+    });
+  </script>
+</body>
+</html>
